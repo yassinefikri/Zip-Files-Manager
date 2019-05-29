@@ -79,12 +79,12 @@ public class MyZipper {
 				if(tempfile.equals(null)) throw new Exception("File Not Found");
 				if(tempfile.isDirectory()) {
 					status.add("Zipping a Directory: "+tempfile.getName()+"\n");
-					//System.out.println("Zipping a Directory: "+tempfile.getName());
+					System.out.println("Zipping a Directory: "+tempfile.getName());
 					zip_directory(tempfile,fis,fos,zos,ze,1);
 				}
 				if(tempfile.isFile()) {
 					status.add("Zipping File: "+tempfile.getName()+"\n");
-					//System.out.println("Zipping File: "+tempfile.getName());
+					System.out.println("Zipping File: "+tempfile.getName());
 					fis=new FileInputStream(filesList.get(i));
 					ze= new ZipEntry(getFileShortName(filesList.get(i)));
 					zos.putNextEntry(ze);
@@ -101,11 +101,11 @@ public class MyZipper {
 			zos.close();
 			fos.close();
 		} catch (Exception e) {
-			status.add(e.getMessage()+"!!!");
+			status.add("------------------------------\n"+e.getMessage()+"\n------------------------------\n");
 			System.err.println(e);
 		}
 		status.add("Done");
-		//System.out.println("Done");
+		System.out.println("Done");
 	}
 	
 	private void zip_directory(File tempfile, FileInputStream fis, FileOutputStream fos, ZipOutputStream zos, ZipEntry ze,int depth) {
@@ -114,13 +114,13 @@ public class MyZipper {
 	        for (int j=0;j<children.length;j++) {
 	        	if(children[j].isDirectory()) {
 	        		status.add("Zipping A sub-directory: "+getChildrenNameWithDepth(children[j].getPath(),depth)+"\n");
-	        		//System.out.println("Zipping A sub-directory: "+getChildrenNameWithDepth(children[j].getPath(),depth));
+	        		System.out.println("Zipping A sub-directory: "+getChildrenNameWithDepth(children[j].getPath(),depth));
 					zip_directory(children[j],fis,fos,zos,ze,depth+1);
 				}
 				if(children[j].isFile()) {
 					try {
 						status.add("Zipping a file in sub-dir: "+getChildrenNameWithDepth(children[j].getPath(),depth)+"\n");
-						//System.out.println("Zipping a file in sub-dir: "+getChildrenNameWithDepth(children[j].getPath(),depth));
+						System.out.println("Zipping a file in sub-dir: "+getChildrenNameWithDepth(children[j].getPath(),depth));
 						fis=new FileInputStream(children[j]);
 						ze= new ZipEntry(getChildrenNameWithDepth(children[j].getPath(),depth));
 						zos.putNextEntry(ze);
@@ -131,7 +131,7 @@ public class MyZipper {
 				    	}
 				    	fis.close();
 					}catch(Exception e) {
-						status.add(e.getMessage()+"!!!");
+						status.add("------------------------------\n"+e.getMessage()+"\n------------------------------+\n");
 						System.err.println(e);
 					}
 				}

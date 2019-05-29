@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.zip.ZipInputStream;
+import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 
 
@@ -14,6 +15,7 @@ public class MyUnzipper {
 	private ZipInputStream zis;
 	private ZipEntry ze;
 	private FileOutputStream fos;
+	public ArrayList<String> status;
 	
 	public MyUnzipper() {
 		zipPath=null;
@@ -23,6 +25,7 @@ public class MyUnzipper {
 		zis=null;
 		ze=null;
 		fos=null;
+		status= new ArrayList<String>();
 	}
 
 	public MyUnzipper(String zipPath,String destPath) {
@@ -33,6 +36,7 @@ public class MyUnzipper {
 		zis=null;
 		ze=null;
 		fos=null;
+		status= new ArrayList<String>();
 	}
 	
 	public String getZipPath() {
@@ -60,7 +64,8 @@ public class MyUnzipper {
 			
 			//Check Zip Exists and Create Destination Folder
 			File temp= new File(zipPath);
-			if (!temp.exists()) throw new Exception("File Dones't Exist");
+			if (!temp.exists()) throw new Exception("File Doesn't Exist");
+			status.add("Creating Destination Directory\n");
 			extractDir = new File(destPath);
 			boolean created = extractDir.mkdir();
 			if(!created) throw new Exception("Failed Create Destination Dir");
@@ -72,6 +77,7 @@ public class MyUnzipper {
 			// Parcours du Zip & Copie des Fichier via Streams
 			while(ze!=null) {
 				System.out.println("Unzipping : "+ze.getName());
+				status.add("Unzipping : "+ze.getName()+"\n");
 				File tempfile = new File(extractDir,ze.getName());
 				new File(tempfile.getParent()).mkdirs();
 				fos= new FileOutputStream(tempfile);
@@ -88,10 +94,12 @@ public class MyUnzipper {
 			fis.close();
 			
 		}catch(Exception e) {
+			status.add("------------------------------\n"+e.getMessage()+"\n------------------------------\n");
 			System.err.println(e);
 		}
 		
 		System.out.println("Done");
+		status.add("Done");
 		
 	}
 	
@@ -113,7 +121,8 @@ public class MyUnzipper {
 	}
 	
 	/*public static void main(String[] args) {
-		MyUnzipper temp = new MyUnzipper("src\\res\\MyZip.zip","src\\res");
+		//MyUnzipper temp = new MyUnzipper("src\\res\\MyZip.zip","C:\\Users\\Led Info\\Desktop");
+		MyUnzipper temp = new MyUnzipper("C:\\Users\\Led Info\\Desktop\\tempj\\MyZip.zip","C:\\Users\\Led Info\\Desktop\\tempj");
 		temp.global_unzip_function();
 	}*/
 	
