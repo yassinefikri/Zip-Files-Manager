@@ -1,4 +1,3 @@
-package prj;
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import java.awt.Insets;
 import java.awt.event.*; 
 import javax.swing.filechooser.*;
 
-public class Graph extends JFrame implements ActionListener, Runnable {
+public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	private static final int swidth=200;
 	private static final int sheight=25;
 	private int currentLines=0;
@@ -23,13 +22,10 @@ public class Graph extends JFrame implements ActionListener, Runnable {
 	String savename;
 	ArrayList<String> filo = new ArrayList<String>();
 	MyZipper temp;
-	public Graph() {
+	public ZipGraph() {
 		super();
-		//	String nom = "";
-		//	String path = "";
 		temp = new MyZipper();
-		JPanel pane= new JPanel();
-		pane.setLayout(new GridBagLayout());
+		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		JLabel welcmlbl = new JLabel("Zip :) ~");
 		JLabel loadlbl = new JLabel("Files to zip: ");
@@ -47,60 +43,60 @@ public class Graph extends JFrame implements ActionListener, Runnable {
 		c.gridheight=1;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.insets = new Insets(10,15,0,0);
-		pane.add(welcmlbl,c);
+		add(welcmlbl,c);
 		c.gridx=0;
 		c.gridy=1;
 		c.gridwidth=1;
 		c.gridheight=1;
 		c.anchor=GridBagConstraints.BASELINE_LEADING;
 		c.insets= new Insets(10,15,0,0);
-		pane.add(loadlbl,c);
+		add(loadlbl,c);
 		c.gridx=1;
 		c.gridy=1;
 		c.weightx=1;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.insets= new Insets(0,15,0,10);
-		pane.add(pathcont,c);
+		add(pathcont,c);
 		c.gridx=2;
 		c.gridy=1;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.gridwidth=GridBagConstraints.REMAINDER;
 		
-		pane.add(load,c);
+		add(load,c);
 		
 		c.gridx=0;
 		c.gridy=2;
 		c.gridwidth=1;
 		c.anchor=GridBagConstraints.BASELINE_LEADING;
 		c.insets= new Insets(10,15,0,0);
-		pane.add(savlbl,c);
+		add(savlbl,c);
 		c.gridx=1;
 		c.gridy=2;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.insets= new Insets(0,15,0,10);
 		c.anchor=GridBagConstraints.BASELINE;
-		pane.add(pathsave,c);
+		add(pathsave,c);
 		c.gridx=2;
 		c.gridy=2;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.insets= new Insets(0,15,0,10);
 
-		pane.add(save,c);
+		add(save,c);
 		c.gridx=1;
 		c.gridy=3;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.insets= new Insets(0,15,0,10);
 
-		pane.add(zip,c);
+		add(zip,c);
 		c.gridx=2;
 		c.gridy=3;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.insets= new Insets(10,15,10,10);
 
-		pane.add(exit,c);
+		add(exit,c);
 		
 		
 		c.gridx=0;
@@ -111,19 +107,14 @@ public class Graph extends JFrame implements ActionListener, Runnable {
 		consl.setRows(20);
 		consl.setEditable(false);
 		JScrollPane sp = new JScrollPane(consl);
-		pane.add(sp,c);
+		add(sp,c);
 			load.setToolTipText("Afficher la liste de fichiers pour compresser");
 			zip.setToolTipText("Compresser");
 			load.addActionListener(this);
 			save.addActionListener(this);
 			zip.addActionListener(this);
 			exit.addActionListener(this);
-
-			JTabbedPane tbp = new JTabbedPane();
-			tbp.add("zip", pane);
-			setContentPane(tbp);
-			setVisible(true);
-			pack();
+			
 			}
 
 	 public void actionPerformed(ActionEvent e)
@@ -132,13 +123,11 @@ public class Graph extends JFrame implements ActionListener, Runnable {
 		 if(cm.equals("load")) {
 			 JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory()); 
 			  j.setMultiSelectionEnabled(true);
-			  
-	            // show open dialog
 	            int r = j.showOpenDialog(null); 
 	            
 	          
 	  
-	            // si les fichiers sont selectiones
+	            // files selected:
 	            if (r == JFileChooser.APPROVE_OPTION) 
 	  
 	            { 
@@ -236,13 +225,18 @@ public class Graph extends JFrame implements ActionListener, Runnable {
 
 		}
 
-	public static void main(String [] args) {
+/*	public static void main(String [] args) {
+		JFrame an = new JFrame();
 		
 		Graph a = new Graph();
+		an.setContentPane(a);
+		an.setVisible(true);
+		an.pack();
+		
 		Thread th = new Thread(a);
 		th.start();
 	}
-
+*/
 
 
 }
