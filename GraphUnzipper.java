@@ -18,18 +18,15 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	private static final int swidth=200;
 	private static final int sheight=25;
 	private int currentLines=0;
-	JTextField pathcont = new JTextField("*Choose a zip file here*");
-	JTextField pathsave = new JTextField("*path files*");
+	JTextField pathcont = new JTextField("*Choose a zip file*");
+	JTextField pathsave = new JTextField("unzip destination");
 	JTextArea consl = new JTextArea();
-	
+	String savename;
 
 	MyUnzipper temp;
 	public GraphUnzipper() {
 		super();
-		//	String nom = "";
-		//	String path = "";
 		temp = new MyUnzipper();
-		JPanel pane = new JPanel();
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		JLabel welcmlbl = new JLabel("UnZip :) ~");
@@ -142,7 +139,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	             
 	               
 	            } 
-	            // if the user press "Annuler"
+	            // if the user presses cancel
 	            else
 	                pathcont.setText("Vous avez annulé l'opération"); 
 	        } 
@@ -150,12 +147,12 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 		  if (cm.equals("Save")) { 
 	            // create an object of JFileChooser class 
 	            JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory()); 
-	          //  j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+	           j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 	            // resctrict the user to select files of all types 
 	            j.setAcceptAllFileFilterUsed(false); 
 	  
 	            // set a title for the dialog 
-	            j.setDialogTitle("la path "); 
+	            j.setDialogTitle(" The path: "); 
 	  
 	           
 	
@@ -165,20 +162,19 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            if (r == JFileChooser.APPROVE_OPTION) 
 	  
 	            { 
-	                // set the label to the path of the selected file 
+	                // set the label to the path of the selected directory.
 	            	
-					pathsave.setText(j.getSelectedFile().getParent());
+					pathsave.setText(j.getSelectedFile().getAbsolutePath());
 					
-	          
+	            	
 	            } 
-	            // if the user cancelled the operation 
+	            // if cancelled
 	            else
 	            	pathsave.setText("Vous avez annulé l'opération"); 
 	        } 
 		  if(cm.equals("Unzip it!")) {
 			
-		//	  MyZipper temp= new MyZipper(savename,pathsave.getText()+'\\',filo);
-			  MyUnzipper temp = new MyUnzipper(pathcont.getText(),pathsave.getText());
+			   temp = new MyUnzipper(pathcont.getText(),pathsave.getText());
 			 
 			  System.out.println(pathsave.getText());
 				temp.global_unzip_function();;
@@ -206,7 +202,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 
 		}
 
-	public static void main(String [] args) {
+/*	public static void main(String [] args) {
 		JFrame an = new JFrame();
 		
 		GraphUnzipper a = new GraphUnzipper();
@@ -216,7 +212,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 		
 		Thread th = new Thread(a);
 		th.start();
-	}
+	}*/
 
 
 
