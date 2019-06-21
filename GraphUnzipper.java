@@ -113,8 +113,8 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 		consl.setEditable(false);
 		JScrollPane sp = new JScrollPane(consl);
 		add(sp,c);
-			load.setToolTipText("Afficher la liste de fichiers pour décompresser");
-			zip.setToolTipText("Décompresser");
+			load.setToolTipText("Afficher la liste de fichiers pour dÃ©compresser");
+			zip.setToolTipText("DÃ©compresser");
 			load.addActionListener(this);
 			save.addActionListener(this);
 			zip.addActionListener(this);
@@ -144,7 +144,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            } 
 	            // if the user press "Annuler"
 	            else
-	                pathcont.setText("Vous avez annulé l'opération"); 
+	                pathcont.setText("Vous avez annulÃ© l'opÃ©ration"); 
 	        } 
 		 
 		  if (cm.equals("Save")) { 
@@ -173,7 +173,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            } 
 	            // if the user cancelled the operation 
 	            else
-	            	pathsave.setText("Vous avez annulé l'opération"); 
+	            	pathsave.setText("Vous avez annulÃ© l'opÃ©ration"); 
 	        } 
 		  if(cm.equals("Unzip it!")) {
 			
@@ -206,17 +206,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 
 		}
 
-	public static void main(String [] args) {
-		JFrame an = new JFrame();
-		
-		GraphUnzipper a = new GraphUnzipper();
-		an.setContentPane(a);
-		an.setVisible(true);
-		an.pack();
-		
-		Thread th = new Thread(a);
-		th.start();
-	}
+	
 
 
 
