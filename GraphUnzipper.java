@@ -19,7 +19,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	private static final int sheight=25;
 	private int currentLines=0;
 	JTextField pathcont = new JTextField("*Choose a zip file*");
-	JTextField pathsave = new JTextField("unzip destination");
+	JTextField pathsave = new JTextField("*unzip destination*");
 	JTextArea consl = new JTextArea();
 	String savename;
 
@@ -110,8 +110,8 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 		consl.setEditable(false);
 		JScrollPane sp = new JScrollPane(consl);
 		add(sp,c);
-			load.setToolTipText("Afficher la liste de fichiers pour décompresser");
-			zip.setToolTipText("Décompresser");
+			load.setToolTipText("Afficher la liste de fichiers pour dÃ©compresser");
+			zip.setToolTipText("DÃ©compresser");
 			load.addActionListener(this);
 			save.addActionListener(this);
 			zip.addActionListener(this);
@@ -124,7 +124,10 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 		 String cm = e.getActionCommand();
 		 if(cm.equals("load")) {
 			 JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory()); 
-			  j.setMultiSelectionEnabled(true);
+			  j.setMultiSelectionEnabled(false);
+	            j.setAcceptAllFileFilterUsed(false); 
+			  FileNameExtensionFilter restrict = new FileNameExtensionFilter("zip files", "zip"); 
+	            j.addChoosableFileFilter(restrict); 
 	            int r = j.showOpenDialog(null); 
 	            
 	          
@@ -141,7 +144,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            } 
 	            // if the user presses cancel
 	            else
-	                pathcont.setText("Vous avez annulé l'opération"); 
+	                pathcont.setText("Vous avez annulÃ© l'opÃ©ration"); 
 	        } 
 		 
 		  if (cm.equals("Save")) { 
@@ -170,7 +173,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            } 
 	            // if cancelled
 	            else
-	            	pathsave.setText("Vous avez annulé l'opération"); 
+	            	pathsave.setText("Vous avez annulÃ© l'opÃ©ration"); 
 	        } 
 		  if(cm.equals("Unzip it!")) {
 			
@@ -217,4 +220,6 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 
 
 }
+
+
 
