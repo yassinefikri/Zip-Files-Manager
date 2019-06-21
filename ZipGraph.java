@@ -27,23 +27,22 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	String savename1;
 	ArrayList<String> filo = new ArrayList<String>();
 	MyZipper temp;
-<<<<<<< HEAD:Graph.java
+
 	MyUnzipper tempo;
-	public Graph() {
-=======
+	
+
 	public ZipGraph() {
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		super();
 		temp = new MyZipper();
-<<<<<<< HEAD:Graph.java
+
 		tempo = new MyUnzipper();
 		JPanel pane= new JPanel();
 		JPanel panea = new JPanel();
 		pane.setLayout(new GridBagLayout());
 		panea.setLayout(new GridBagLayout());
-=======
+
 		setLayout(new GridBagLayout());
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
+
 		GridBagConstraints c = new GridBagConstraints();
 		GridBagConstraints d = new GridBagConstraints();
 		JLabel welcmlbl = new JLabel("Zip :) ~");
@@ -74,7 +73,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.gridheight=1;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.insets = new Insets(10,15,0,0);
-<<<<<<< HEAD:Graph.java
+
 		d.gridx=d.gridy=0;
 		d.gridwidth=GridBagConstraints.REMAINDER;
 		d.gridheight=1;
@@ -82,16 +81,14 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		d.insets = new Insets(10,15,0,0);
 		pane.add(welcmlbl,c);
 		panea.add(welcmlbl1,d);
-=======
+
 		add(welcmlbl,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		c.gridx=0;
 		c.gridy=1;
 		c.gridwidth=1;
 		c.gridheight=1;
 		c.anchor=GridBagConstraints.BASELINE_LEADING;
 		c.insets= new Insets(10,15,0,0);
-<<<<<<< HEAD:Graph.java
 		d.gridx=0;
 		d.gridy=1;
 	    d.gridwidth=1;
@@ -103,16 +100,13 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	    panea.add(loadlbl1,d);
 	
 		
-=======
 		add(loadlbl,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		c.gridx=1;
 		c.gridy=1;
 		c.weightx=1;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.insets= new Insets(0,15,0,10);
-<<<<<<< HEAD:Graph.java
 		d.gridx=1;
 		d.gridy=1;
 		d.weightx=1;
@@ -121,9 +115,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		d.insets= new Insets(0,15,0,10);
 		pane.add(pathcont,c);
 		panea.add(pathcont1,d);
-=======
 		add(pathcont,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		c.gridx=2;
 		c.gridy=1;
 		c.fill=GridBagConstraints.HORIZONTAL;
@@ -134,35 +126,28 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		d.fill=GridBagConstraints.HORIZONTAL;
 		d.anchor=GridBagConstraints.BASELINE;
 		d.gridwidth=GridBagConstraints.REMAINDER;
-		
-<<<<<<< HEAD:Graph.java
+
 		pane.add(load,c);
 		panea.add(load1,d);
-=======
 		add(load,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		
 		c.gridx=0;
 		c.gridy=2;
 		c.gridwidth=1;
 		c.anchor=GridBagConstraints.BASELINE_LEADING;
 		c.insets= new Insets(10,15,0,0);
-<<<<<<< HEAD:Graph.java
 		d.gridx=0;
 		d.gridy=2;
 		d.gridwidth=1;
 		d.anchor=GridBagConstraints.BASELINE_LEADING;
 		d.insets= new Insets(10,15,0,0);
 		panea.add(savlbl1,d);
-=======
 		add(savlbl,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		c.gridx=1;
 		c.gridy=2;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.insets= new Insets(0,15,0,10);
 		c.anchor=GridBagConstraints.BASELINE;
-<<<<<<< HEAD:Graph.java
 		d.gridx=1;
 		d.gridy=2;
 		d.fill=GridBagConstraints.HORIZONTAL;
@@ -170,9 +155,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		d.anchor=GridBagConstraints.BASELINE;
 		pane.add(pathsave,c);
 		panea.add(pathsave1,d);
-=======
 		add(pathsave,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		c.gridx=2;
 		c.gridy=2;
 		c.fill=GridBagConstraints.HORIZONTAL;
@@ -184,12 +167,9 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		d.anchor=GridBagConstraints.BASELINE;
 		d.insets= new Insets(0,15,0,10);
 
-<<<<<<< HEAD:Graph.java
 		pane.add(save,c);
 		panea.add(save1,d);
-=======
 		add(save,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		c.gridx=1;
 		c.gridy=3;
 		c.anchor=GridBagConstraints.LINE_START;
@@ -199,12 +179,9 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		d.anchor=GridBagConstraints.LINE_START;
 		d.insets= new Insets(0,15,0,10);
 
-<<<<<<< HEAD:Graph.java
 		pane.add(zip,c);
 		panea.add(unzip,d);
-=======
 		add(zip,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		c.gridx=2;
 		c.gridy=3;
 		c.anchor=GridBagConstraints.BASELINE;
@@ -214,13 +191,10 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		d.anchor=GridBagConstraints.BASELINE;
 		d.insets= new Insets(10,15,10,10);
 
-<<<<<<< HEAD:Graph.java
 		pane.add(exit,c);
 		panea.add(exit1,d);
-=======
 		add(exit,c);
 		
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
 		
 		c.gridx=0;
 		c.gridy=4;
@@ -238,34 +212,26 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		consl1.setEditable(false);
 		
 		JScrollPane sp = new JScrollPane(consl);
-<<<<<<< HEAD:Graph.java
 		JScrollPane sp1 = new JScrollPane(consl1);
 		pane.add(sp,c);
 		panea.add(sp1,d);
 		
-=======
-		add(sp,c);
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
+     		add(sp,c);
 			load.setToolTipText("Afficher la liste de fichiers pour compresser");
 			zip.setToolTipText("Compresser");
 			load.addActionListener(this);
 			save.addActionListener(this);
 			zip.addActionListener(this);
 			exit.addActionListener(this);
-<<<<<<< HEAD:Graph.java
 			load1.setToolTipText("Afficher la liste de fichiers pour compresser");
 			unzip.setToolTipText("Décompresser");
 			JTabbedPane tbp = new JTabbedPane();
 			
 			tbp.add("zip", pane);
-			tbp.add("unzip",panea);
 			
-			setContentPane(tbp);
-			setVisible(true);
-			pack();
-=======
 			
->>>>>>> bd2d06e88b7b4f2de2624328b4d0bc7cfd650927:ZipGraph.java
+			
+			
 			}
 
 	 public void actionPerformed(ActionEvent e)
