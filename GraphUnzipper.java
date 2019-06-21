@@ -21,7 +21,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	JTextField pathcont = new JTextField("*Choose a zip file here*");
 	JTextField pathsave = new JTextField("*path files*");
 	JTextArea consl = new JTextArea();
-	String savename;
+	
 
 	MyUnzipper temp;
 	public GraphUnzipper() {
@@ -169,7 +169,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            	
 					pathsave.setText(j.getSelectedFile().getParent());
 					
-	            	savename=j.getApproveButtonText();
+	          
 	            } 
 	            // if the user cancelled the operation 
 	            else
