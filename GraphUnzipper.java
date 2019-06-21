@@ -1,5 +1,4 @@
 
-
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	private static final int sheight=25;
 	private int currentLines=0;
 	JTextField pathcont = new JTextField("*Choose a zip file*");
-	JTextField pathsave = new JTextField("unzip destination");
+	JTextField pathsave = new JTextField("*unzip destination*");
 	JTextArea consl = new JTextArea();
 	String savename;
 
@@ -124,7 +123,10 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 		 String cm = e.getActionCommand();
 		 if(cm.equals("load")) {
 			 JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory()); 
-			  j.setMultiSelectionEnabled(true);
+			  j.setMultiSelectionEnabled(false);
+	            j.setAcceptAllFileFilterUsed(false); 
+			  FileNameExtensionFilter restrict = new FileNameExtensionFilter("zip files", "zip"); 
+	            j.addChoosableFileFilter(restrict); 
 	            int r = j.showOpenDialog(null); 
 	            
 	          
