@@ -28,7 +28,7 @@ public class MyZipper {
 		status= new ArrayList<String>();
 	}
 	
-	public MyZipper(String zipName,String zipPath,ArrayList<String> filesList) {
+	public MyZipper(String zipName,String zipPath) {
 		this.zipName=zipName;
 		this.zipPath=zipPath;
 		this.filesList=filesList;
