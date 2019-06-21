@@ -1,14 +1,18 @@
+package prj;
+
 import javax.swing.*;
 
 public class Main extends JFrame implements Runnable{
 	JTabbedPane tbp;
 	ZipGraph ab;
-	JMenuBar menu;
+	GraphUnzipper ac;
 	Main(){
 		super("ZIP/UNZIP");	
 	tbp = new JTabbedPane();
 	ab = new ZipGraph();
+	ac = new GraphUnzipper();
 	tbp.add(ab,"zip");
+	tbp.add(ac,"unzip");
 	setContentPane(tbp);
 	setVisible(true);
 	setResizable(false);
@@ -16,17 +20,21 @@ public class Main extends JFrame implements Runnable{
 	pack();
 	}
 	
+
+
+	public void run() {
+		Thread th = new Thread(ab);
+		th.start();
+		Thread ts = new Thread(ac);
+		ts.start();
+	}
+	
+	
 	public static void main (String [] args) {
 		
 		
 		Main prog = new Main();
 		Thread th = new Thread(prog);
-		th.start();
-		
-	}
-
-	public void run() {
-		Thread th = new Thread(ab);
 		th.start();
 		
 	}

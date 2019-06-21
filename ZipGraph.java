@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -104,7 +105,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.fill=GridBagConstraints.BOTH;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.gridwidth=GridBagConstraints.REMAINDER;
-		consl.setRows(20);
+		consl.setRows(15);
 		consl.setEditable(false);
 		JScrollPane sp = new JScrollPane(consl);
 		add(sp,c);
@@ -158,7 +159,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	                // set the label to the path of the selected file 
 	              //  pathcont.setText(j.getSelectedFile().getAbsolutePath()); 
 	            } 
-	            // if the user press "Annuler"
+	            // if the user presses cancel
 	            else
 	                pathcont.setText("Vous avez annulé l'opération"); 
 	        } 
@@ -173,7 +174,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	            // set a title for the dialog 
 	            j.setDialogTitle("Sauvgarder votre  fichier .zip"); 
 	  
-	            // only allow files of .txt extension 
+	            // only allow files of .zip extension 
 	            FileNameExtensionFilter restrict = new FileNameExtensionFilter("zip files", "zip"); 
 	            j.addChoosableFileFilter(restrict); 
 	  
@@ -196,10 +197,9 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	        } 
 		  if(cm.equals("Zip it!")) {
 			  System.out.println(filo.size());
-		//	  MyZipper temp= new MyZipper(savename,pathsave.getText()+'\\',filo);
 			  temp.setZipName(savename);
 			  temp.setZipPath(pathsave.getText());
-			  temp.setFilesList(filo);
+		  temp.setFilesList(filo);
 			  System.out.println(pathsave.getText());
 				temp.global_zip_function();
 		  }
@@ -211,7 +211,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		 while(true) {
 			    if(temp.status.size()>currentLines){
 			        for(int i=currentLines;i<temp.status.size();i++) {
-			             consl.setText(consl.getText()+temp.status.get(i)+"\n");
+			             consl.setText(consl.getText()+temp.status.get(i));
 			        }
 			        currentLines=temp.status.size();
 			    }
