@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	private int currentLines=0;
 	JTextField pathcont = new JTextField("*Choose a zip file*");
 	JTextField pathsave = new JTextField("*unzip destination*");
-	JTextArea consl = new JTextArea();
+	JTextArea consl = new JTextArea(30,50);
 	String savename;
 
 	MyUnzipper temp;
@@ -105,9 +104,10 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 		c.fill=GridBagConstraints.BOTH;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.gridwidth=GridBagConstraints.REMAINDER;
-		consl.setRows(20);
 		consl.setEditable(false);
 		JScrollPane sp = new JScrollPane(consl);
+		sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		add(sp,c);
 			load.setToolTipText("Afficher la liste de fichiers pour décompresser");
 			zip.setToolTipText("Décompresser");
@@ -175,7 +175,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            	pathsave.setText("Vous avez annulé l'opération"); 
 	        } 
 		  if(cm.equals("Unzip it!")) {
-			
+			  consl.setText("");
 			   temp = new MyUnzipper(pathcont.getText(),pathsave.getText());
 			 
 			  System.out.println(pathsave.getText());

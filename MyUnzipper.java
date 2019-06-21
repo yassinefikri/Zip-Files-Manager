@@ -65,6 +65,7 @@ public class MyUnzipper {
 			//Check Zip Exists and Create Destination Folder
 			File temp= new File(zipPath);
 			if (!temp.exists()) throw new Exception("File Doesn't Exist");
+			status.add("------------------------------------------");
 			status.add("Creating Destination Directory");
 			extractDir = new File(destPath);
 			boolean created = extractDir.mkdir();
@@ -94,7 +95,7 @@ public class MyUnzipper {
 			fis.close();
 			
 		}catch(Exception e) {
-			status.add("------------------------------\n"+e.getMessage()+"\n------------------------------\n");
+			status.add("-----------\n"+e.getMessage()+"\n----------\n");
 			System.err.println(e);
 		}
 		
@@ -121,8 +122,7 @@ public class MyUnzipper {
 	}
 	
 	/*public static void main(String[] args) {
-		//MyUnzipper temp = new MyUnzipper("src\\res\\MyZip.zip","C:\\Users\\Led Info\\Desktop");
-		MyUnzipper temp = new MyUnzipper("C:\\Users\\Led Info\\Desktop\\tempj\\MyZip.zip","C:\\Users\\Led Info\\Desktop\\tempj");
+		MyUnzipper temp = new MyUnzipper("src\\res\\MyZip.zip","C:\\Users\\Led Info\\Desktop");
 		temp.global_unzip_function();
 	}*/
 	

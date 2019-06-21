@@ -67,7 +67,7 @@ public class MyZipper {
 			if(zipPath.equals(null) || zipName.equals(null) || filesList.size()==0) throw new Exception("Empty Field");
 			
 			CheckExtension();
-			
+			status.add("-------------------------------------------------------\n");
 			status.add("Creating "+zipName+"\n");
 			
 			fos= new FileOutputStream(zipPath+"\\"+zipName);
@@ -103,7 +103,7 @@ public class MyZipper {
 			zos.close();
 			fos.close();
 		} catch (Exception e) {
-			status.add("------------------------------\n"+e.getMessage()+"\n------------------------------\n");
+			status.add("-----------\n"+e.getMessage()+"\n----------\n");
 			System.err.println(e);
 		}
 		status.add("Done\n");
@@ -133,7 +133,7 @@ public class MyZipper {
 				    	}
 				    	fis.close();
 					}catch(Exception e) {
-						status.add("------------------------------\n"+e.getMessage()+"\n------------------------------+\n");
+						status.add("-----------\n"+e.getMessage()+"\n----------\n");
 						System.err.println(e);
 					}
 				}

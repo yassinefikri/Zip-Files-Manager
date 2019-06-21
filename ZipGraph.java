@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	private int currentLines=0;
 	JTextField pathcont = new JTextField("*loaded files here*");
 	JTextField pathsave = new JTextField("*the zip to save*");
-	JTextArea consl = new JTextArea();
+	JTextArea consl = new JTextArea(30,50);
 	String savename;
 	ArrayList<String> filo = new ArrayList<String>();
 	MyZipper temp;
@@ -105,9 +104,10 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.fill=GridBagConstraints.BOTH;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.gridwidth=GridBagConstraints.REMAINDER;
-		consl.setRows(20);
 		consl.setEditable(false);
 		JScrollPane sp = new JScrollPane(consl);
+		sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		add(sp,c);
 			load.setToolTipText("Afficher la liste de fichiers pour compresser");
 			zip.setToolTipText("Compresser");
@@ -196,6 +196,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	            	pathsave.setText("Vous avez annulé l'opération"); 
 	        } 
 		  if(cm.equals("Zip it!")) {
+			  consl.setText("");
 			  System.out.println(filo.size());
 			  temp.setZipName(savename);
 			  temp.setZipPath(pathsave.getText());
