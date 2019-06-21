@@ -18,70 +18,32 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 	private static final int sheight=25;
 	private int currentLines=0;
 	JTextField pathcont = new JTextField("*loaded files here*");
-	JTextField pathcont1 = new JTextField("*loaded zip here*");
 	JTextField pathsave = new JTextField("*the zip to save*");
-	JTextField pathsave1 = new JTextField("*Choose exctraction directory path *");
 	JTextArea consl = new JTextArea();
-	JTextArea consl1 = new JTextArea();
 	String savename;
-	String savename1;
 	ArrayList<String> filo = new ArrayList<String>();
 	MyZipper temp;
-
-	MyUnzipper tempo;
-	
-
 	public ZipGraph() {
 		super();
 		temp = new MyZipper();
-
-		tempo = new MyUnzipper();
-		JPanel pane= new JPanel();
-		JPanel panea = new JPanel();
-		pane.setLayout(new GridBagLayout());
-		panea.setLayout(new GridBagLayout());
-
 		setLayout(new GridBagLayout());
-
 		GridBagConstraints c = new GridBagConstraints();
-		GridBagConstraints d = new GridBagConstraints();
 		JLabel welcmlbl = new JLabel("Zip :) ~");
-		JLabel welcmlbl1 = new JLabel("unZip :) ~");
 		JLabel loadlbl = new JLabel("Files to zip: ");
-		JLabel loadlbl1 = new JLabel("Files to Unzip: ");
 		JButton load = new JButton("load");
-		JButton load1 = new JButton("load");
 		JLabel savlbl = new JLabel ("Save the zip file : ");
-		JLabel savlbl1 = new JLabel ("Save the unzip file : ");
 		JButton save = new JButton("Save");
-		JButton save1 = new JButton("Save");
 		JButton zip = new JButton("Zip it!");
-		JButton unzip = new JButton("UNZip it!");
 		JButton exit = new JButton ("EXIT");
-		JButton exit1 = new JButton ("EXIT");
 		pathcont.setPreferredSize(new Dimension(swidth,sheight));
-		pathcont1.setPreferredSize(new Dimension(swidth,sheight));
 		pathcont.setEditable(false);
-		pathcont1.setEditable(false);
 		pathsave.setPreferredSize(new Dimension(swidth,sheight));
-		pathsave1.setPreferredSize(new Dimension(swidth,sheight));
 		pathsave.setEditable(false);
-		pathsave1.setEditable(false);
-		
 		c.gridx=c.gridy=0;
 		c.gridwidth=GridBagConstraints.REMAINDER;
 		c.gridheight=1;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.insets = new Insets(10,15,0,0);
-
-		d.gridx=d.gridy=0;
-		d.gridwidth=GridBagConstraints.REMAINDER;
-		d.gridheight=1;
-		d.anchor=GridBagConstraints.LINE_START;
-		d.insets = new Insets(10,15,0,0);
-		pane.add(welcmlbl,c);
-		panea.add(welcmlbl1,d);
-
 		add(welcmlbl,c);
 		c.gridx=0;
 		c.gridy=1;
@@ -89,17 +51,6 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.gridheight=1;
 		c.anchor=GridBagConstraints.BASELINE_LEADING;
 		c.insets= new Insets(10,15,0,0);
-		d.gridx=0;
-		d.gridy=1;
-	    d.gridwidth=1;
-		d.gridheight=1;
-		d.anchor=GridBagConstraints.BASELINE_LEADING;
-		d.insets= new Insets(10,15,0,0);
-		
-		pane.add(loadlbl,c);
-	    panea.add(loadlbl1,d);
-	
-		
 		add(loadlbl,c);
 		c.gridx=1;
 		c.gridy=1;
@@ -107,28 +58,13 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.insets= new Insets(0,15,0,10);
-		d.gridx=1;
-		d.gridy=1;
-		d.weightx=1;
-		d.fill=GridBagConstraints.HORIZONTAL;
-		d.anchor=GridBagConstraints.BASELINE;
-		d.insets= new Insets(0,15,0,10);
-		pane.add(pathcont,c);
-		panea.add(pathcont1,d);
 		add(pathcont,c);
 		c.gridx=2;
 		c.gridy=1;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.gridwidth=GridBagConstraints.REMAINDER;
-		d.gridx=2;
-		d.gridy=1;
-		d.fill=GridBagConstraints.HORIZONTAL;
-		d.anchor=GridBagConstraints.BASELINE;
-		d.gridwidth=GridBagConstraints.REMAINDER;
-
-		pane.add(load,c);
-		panea.add(load1,d);
+		
 		add(load,c);
 		
 		c.gridx=0;
@@ -136,63 +72,31 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.gridwidth=1;
 		c.anchor=GridBagConstraints.BASELINE_LEADING;
 		c.insets= new Insets(10,15,0,0);
-		d.gridx=0;
-		d.gridy=2;
-		d.gridwidth=1;
-		d.anchor=GridBagConstraints.BASELINE_LEADING;
-		d.insets= new Insets(10,15,0,0);
-		panea.add(savlbl1,d);
 		add(savlbl,c);
 		c.gridx=1;
 		c.gridy=2;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.insets= new Insets(0,15,0,10);
 		c.anchor=GridBagConstraints.BASELINE;
-		d.gridx=1;
-		d.gridy=2;
-		d.fill=GridBagConstraints.HORIZONTAL;
-		d.insets= new Insets(0,15,0,10);
-		d.anchor=GridBagConstraints.BASELINE;
-		pane.add(pathsave,c);
-		panea.add(pathsave1,d);
 		add(pathsave,c);
 		c.gridx=2;
 		c.gridy=2;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.insets= new Insets(0,15,0,10);
-		d.gridx=2;
-		d.gridy=2;
-		d.fill=GridBagConstraints.HORIZONTAL;
-		d.anchor=GridBagConstraints.BASELINE;
-		d.insets= new Insets(0,15,0,10);
 
-		pane.add(save,c);
-		panea.add(save1,d);
 		add(save,c);
 		c.gridx=1;
 		c.gridy=3;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.insets= new Insets(0,15,0,10);
-		d.gridx=1;
-		d.gridy=3;
-		d.anchor=GridBagConstraints.LINE_START;
-		d.insets= new Insets(0,15,0,10);
 
-		pane.add(zip,c);
-		panea.add(unzip,d);
 		add(zip,c);
 		c.gridx=2;
 		c.gridy=3;
 		c.anchor=GridBagConstraints.BASELINE;
 		c.insets= new Insets(10,15,10,10);
-		d.gridx=2;
-		d.gridy=3;
-		d.anchor=GridBagConstraints.BASELINE;
-		d.insets= new Insets(10,15,10,10);
 
-		pane.add(exit,c);
-		panea.add(exit1,d);
 		add(exit,c);
 		
 		
@@ -201,36 +105,16 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.fill=GridBagConstraints.BOTH;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.gridwidth=GridBagConstraints.REMAINDER;
-		d.gridx=0;
-		d.gridy=4;
-		d.fill=GridBagConstraints.BOTH;
-		d.anchor=GridBagConstraints.LINE_START;
-		d.gridwidth=GridBagConstraints.REMAINDER;
 		consl.setRows(20);
 		consl.setEditable(false);
-		consl1.setRows(20);
-		consl1.setEditable(false);
-		
 		JScrollPane sp = new JScrollPane(consl);
-		JScrollPane sp1 = new JScrollPane(consl1);
-		pane.add(sp,c);
-		panea.add(sp1,d);
-		
-     		add(sp,c);
+		add(sp,c);
 			load.setToolTipText("Afficher la liste de fichiers pour compresser");
 			zip.setToolTipText("Compresser");
 			load.addActionListener(this);
 			save.addActionListener(this);
 			zip.addActionListener(this);
 			exit.addActionListener(this);
-			load1.setToolTipText("Afficher la liste de fichiers pour compresser");
-			unzip.setToolTipText("Décompresser");
-			JTabbedPane tbp = new JTabbedPane();
-			
-			tbp.add("zip", pane);
-			
-			
-			
 			
 			}
 
@@ -319,13 +203,10 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 			  System.out.println(pathsave.getText());
 				temp.global_zip_function();
 		  }
-		  
 		  if(cm.equals("EXIT")) {
 			  System.exit(0);
-
 		  }
-	 }
-		
+		 }
 	 public void run(){
 		 while(true) {
 			    if(temp.status.size()>currentLines){
