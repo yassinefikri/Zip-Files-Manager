@@ -65,7 +65,7 @@ public class MyUnzipper {
 			//Check Zip Exists and Create Destination Folder
 			File temp= new File(zipPath);
 			if (!temp.exists()) throw new Exception("File Doesn't Exist");
-			status.add("Creating Destination Directory\n");
+			status.add("Creating Destination Directory");
 			extractDir = new File(destPath);
 			boolean created = extractDir.mkdir();
 			if(!created) throw new Exception("Failed Create Destination Dir");
@@ -77,7 +77,7 @@ public class MyUnzipper {
 			// Parcours du Zip & Copie des Fichier via Streams
 			while(ze!=null) {
 				System.out.println("Unzipping : "+ze.getName());
-				status.add("Unzipping : "+ze.getName()+"\n");
+				status.add("Unzipping : "+ze.getName());
 				File tempfile = new File(extractDir,ze.getName());
 				new File(tempfile.getParent()).mkdirs();
 				fos= new FileOutputStream(tempfile);
@@ -99,7 +99,7 @@ public class MyUnzipper {
 		}
 		
 		System.out.println("Done");
-		status.add("Done");
+		status.add("Done\n");
 		
 	}
 	

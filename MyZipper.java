@@ -66,6 +66,8 @@ public class MyZipper {
 			//Testing 
 			if(zipPath.equals(null) || zipName.equals(null) || filesList.size()==0) throw new Exception("Empty Field");
 			
+			CheckExtension();
+			
 			status.add("Creating "+zipName+"\n");
 			
 			fos= new FileOutputStream(zipPath+"\\"+zipName);
@@ -104,8 +106,8 @@ public class MyZipper {
 			status.add("------------------------------\n"+e.getMessage()+"\n------------------------------\n");
 			System.err.println(e);
 		}
-		status.add("Done");
-		System.out.println("Done");
+		status.add("Done\n");
+		System.out.println("Done\n");
 	}
 	
 	private void zip_directory(File tempfile, FileInputStream fis, FileOutputStream fos, ZipOutputStream zos, ZipEntry ze,int depth) {
@@ -168,6 +170,17 @@ public class MyZipper {
 		}
 		for(int i=pos+1;i<temp.length;i++) res+=temp[i];
 		return res;
+	}
+	
+	public void CheckExtension() {
+		char [] temp= zipName.toCharArray();
+		if(temp.length<5) addExtension();
+		else {
+			if(temp[temp.length-1]!='p' || temp[temp.length-2]!='i' || temp[temp.length-3]!='z' || temp[temp.length-4]!='.') addExtension();
+		}
+	}
+	public void addExtension() {
+		zipName+=".zip";
 	}
 
 	/*public static void main(String[] args) {
