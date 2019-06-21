@@ -105,7 +105,7 @@ public class ZipGraph extends JPanel implements ActionListener, Runnable {
 		c.fill=GridBagConstraints.BOTH;
 		c.anchor=GridBagConstraints.LINE_START;
 		c.gridwidth=GridBagConstraints.REMAINDER;
-		consl.setRows(15);
+		consl.setRows(20);
 		consl.setEditable(false);
 		JScrollPane sp = new JScrollPane(consl);
 		add(sp,c);
