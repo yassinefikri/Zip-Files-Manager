@@ -22,7 +22,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	JTextField pathsave = new JTextField("*path files*");
 	JTextArea consl = new JTextArea();
 	String savename;
-	ArrayList<String> filo = new ArrayList<String>();
+
 	MyUnzipper temp;
 	public GraphUnzipper() {
 		super();
@@ -176,7 +176,7 @@ public class GraphUnzipper extends JPanel implements ActionListener, Runnable {
 	            	pathsave.setText("Vous avez annulé l'opération"); 
 	        } 
 		  if(cm.equals("Unzip it!")) {
-			  System.out.println(filo.size());
+			
 		//	  MyZipper temp= new MyZipper(savename,pathsave.getText()+'\\',filo);
 			  MyUnzipper temp = new MyUnzipper(pathcont.getText(),pathsave.getText());
 			 
